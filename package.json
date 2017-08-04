@@ -2,6 +2,7 @@
   "private": true,
   "dependencies": {
     "express": "^4.15.3",
-    "mustache-express": "^1.2.5"
+    "mustache-express": "^1.2.5",
+    "pg-promise": "^6.3.6"
   }
 }
