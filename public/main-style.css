@@ -1,0 +1,37 @@
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.users  {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 20px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.users img {
+  width: 80%;
+  align-self: center;
+}
+
+.users h2 a{
+  color: #347ccd;
+  font-weight: bolder;
+}
+
+.users p {
+  color: #666;
+  font-weight: lighter;
+  padding: 5px 5px;
+  margin-left: 5px;
+}
+
+.users p.available {
+  color: #d63131;
+}

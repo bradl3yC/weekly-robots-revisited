@@ -1,0 +1,29 @@
+img {
+  border: 2px solid #dbdbdb;
+  border-radius: 50%;
+  float: left;
+  margin-right: 1em;
+}
+
+p {
+  margin: 0;
+}
+
+table {
+  margin-top: 20px;
+}
+
+table tr td {
+  display: flex;
+  flex-direction: column;
+}
+
+table tr th {
+  vertical-align: top;
+  text-align: right;
+  padding-right: 1em;
+}
+
+.available {
+  color: #d63131;
+}
