@@ -3,7 +3,7 @@ const mustacheExpress = require('mustache-express')
 const data = require('./data.js')
 const pgPromise = require('pg-promise')()
 const robotDatabase = pgPromise({ database: 'robots' })
-const skillsDatabase = pgPromise({database: 'skills'})
+const skillsDatabase = pgPromise({vdatabase: 'skills'})
 // create table robots (
 // .......................... id serial primary key,
 // .......................... username varchar(30) not null,
@@ -36,29 +36,10 @@ app.set('view engine', 'mst')
 
 app.get('/', (request, response) => {
 
-  robotDatabase.any(`SELECT * from "robots"`).then(robot => {
-    const robots = {
-      username: robot.username,
-      name: robot.name,
-      avatar: robot.avatar,
-      email: robot.email,
-      university: robot.university,
-      job: robot.job,
-      company: robot.company,
-      phone: robot.phone,
-      street_num: robot.street_num,
-      street_name: robot.stret_name,
-      city: robot.city,
-      state_or_province: robot.state_or_province,
-      postal_code: robot.postal_code,
-      country: robot.country
-    }
-    console.log(robot.robot.avatar)
-    // skillsDatabase.any('SELECT * from "skills" WHERE robot_id = $(robot.id)')
-
+robotDatabase.any(`SELECT * from "robots"`).then(robots => {
+    console.log(typeof robots)
+    response.render('index', { robots })
   })
-
-  response.render('index', data)
 })
 
 app.use(express.static('public'))

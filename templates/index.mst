@@ -7,20 +7,15 @@
   </head>
   <body>
     <ul>
-      {{#users}}
+      {{#robots}}
         <li class="users">
           <img src="{{avatar}}" alt="">
           <h2>
             <a href="/users/{{id}}">{{name}}</a>
           </h2>
-          {{#job}}
             <p>{{job}} {{company}}</p>
-          {{/job}}
-          {{^job}}
-          <p class="available">Available for hire</p>
-          {{/job}}
         </li>
-      {{/users}}>
+      {{/robots}}
     </ul>
   </body>
 </html>
