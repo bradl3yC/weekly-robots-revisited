@@ -37,15 +37,28 @@ app.set('view engine', 'mst')
 app.get('/', (request, response) => {
 
 robotDatabase.any(`SELECT * from "robots"`).then(robots => {
-    console.log(typeof robots)
     response.render('index', { robots })
   })
 })
 
 app.use(express.static('public'))
+
 app.get('/users/:id', (request, response) => {
-  const userData = data.users[request.params.id - 1]
-  response.render('user', userData)
+  const id = parseInt(request.params.id)
+
+  robotDatabase.task('get-robot-skills', task => {
+        return task.batch([
+            task.one('SELECT * FROM "robots" WHERE id = $(id)', { id: id }),
+            task.any(`SELECT * from "skills" where robot_id = $(id)`, {id: id})
+        ])
+      })
+      .then(data => {
+          const robot = data[0]
+          const skills = data[1]
+          response.render("user", {robot, skills})
+      })
+      .catch(error => {
+      })
 })
 
 
