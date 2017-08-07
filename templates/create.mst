@@ -6,5 +6,25 @@
   </head>
   <body>
     <h1>Create a robot!</h1>
+    <!-- username name avatar email university job company phone street_num
+    street_name city state_or_province postal_code country     -->
+
+    <form class="" action="/new" method="post">
+      <input type="text" name="username" placeholder="Username">
+      <input type="text" name="name" placeholder="Full Name">
+      <input type="text" name="avatar" placeholder="Avatar URL">
+      <input type="text" name="university" placeholder="University">
+      <input type="text" name="job" placeholder="Job">
+      <input type="text" name="company" placeholder="Company">
+      <input type="text" name="phone" placeholder="Phone Number">
+      <input type="text" name="street_num" placeholder="Street Number">
+      <input type="text" name="street_name" placeholder="Street Name">
+      <input type="text" name="city" placeholder="City">
+      <input type="text" name="state_or_province" placeholder="State or Province">
+      <input type="text" name="postal_code" placeholder="Postal Code">
+      <input type="text" name="country" placeholder="Country">
+      <input type="text" name="skills" placeholder="Skills comma separated">
+      <button type="submit" name="button">Create Robot!</button>
+    </form>
   </body>
 </html>

@@ -2,6 +2,7 @@ const express = require('express')
 const mustacheExpress = require('mustache-express')
 const pgPromise = require('pg-promise')()
 const robotDatabase = pgPromise({ database: 'robots' })
+const bodyParser = require('body-parser')
 
 // create table robots (
 // id serial primary key,
@@ -28,6 +29,7 @@ const robotDatabase = pgPromise({ database: 'robots' })
 const app = express()
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.engine('mst', mustacheExpress())
 app.set('views', './templates')
@@ -84,6 +86,43 @@ app.post('/delete/:id', (request, response) => {
           const displayError = "Oops! Something wen't wrong!"
           response.render("index", {displayError})
       })
+})
+
+app.post('/new', (request, response) => {
+  const newRobot = {
+    username: request.body.username,
+    name: request.body.name,
+    avatar: request.body.avatar,
+    email: request.body.email,
+    university: request.body.university,
+    job: request.body.job,
+    company: request.body.company,
+    phone: request.body.phone,
+    street_num: request.body.street_num,
+    street_name: request.body.stret_name,
+    city: request.body.city,
+    state_or_province: request.body.state_or_province,
+    postal_code: request.body.postal_code,
+    country: request.body.country
+  }
+  const newSkills = request.body.skills.split(', ')
+
+  robotDatabase.one(`INSERT INTO robots (username, name, avatar, email, university, job, company, phone, street_num,
+      street_name, city, state_or_province, postal_code, country)
+      VALUES($(username), $(name), $(avatar), $(email), $(university), $(job), $(company), $(phone),
+      $(street_num), $(street_name), $(city), $(state_or_province), $(postal_code), $(country)) RETURNING id`,
+      newRobot)
+      .then(newRobotId => {
+        newSkills.forEach(skill => {
+          const newSkill = {
+            skill: skill,
+            robot_id: newRobotId.id
+          }
+        robotDatabase.none(`INSERT INTO skills (skill, robot_id)
+            VALUES($(skill), $(robot_id))`, newSkill)
+      })
+    })
+  response.redirect('/')
 })
 
 app.listen(3000, () => {
