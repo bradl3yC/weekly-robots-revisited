@@ -6,10 +6,14 @@
     <title></title>
   </head>
   <body>
+    <div class ="error">
+      {{displayError}}
+    </div>
     <div class="robot-info">
+    {{#robot}}
       <img src="{{avatar}}" alt="">
       <h1>{{name}}</h1>
-      <p>{{#address.city}}{{address.city}},{{/address.city}} {{address.country}}  |
+      <p>{{#city}}{{city}},{{/city}} {{country}}  |
         {{#job}}{{job}}{{/job}} {{^job}}<span class="available">Available for hire </span>{{/job}}</p>
         <p>{{email}}  |  {{phone}}</p>
     </div>
@@ -23,9 +27,13 @@
       <tr>
         <th>Skills</th>
         {{#skills}}
-        <td>{{.}}</td>
+        <td>{{skill}}</td>
         {{/skills}}
       </tr>
     </table>
+    <form class="delete-button" action="/delete/{{id}}" method="post">
+      <button type="submit" name="button">Delete!</button>
+    </form>
+  {{/robot}}
   </body>
 </html>

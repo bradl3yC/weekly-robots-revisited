@@ -6,6 +6,12 @@
     <title></title>
   </head>
   <body>
+    <div class="errors">
+      {{displayError}}
+    </div>
+    <div class="create-robot">
+      <a href="/create">Create Robot!</a>
+    </div>
     <ul>
       {{#robots}}
         <li class="users">
@@ -13,7 +19,12 @@
           <h2>
             <a href="/users/{{id}}">{{name}}</a>
           </h2>
+          {{#job}}
             <p>{{job}} {{company}}</p>
+          {{/job}}
+          {{^job}}
+            <p class="available">Available for hire</p>
+          {{/job}}
         </li>
       {{/robots}}
     </ul>
