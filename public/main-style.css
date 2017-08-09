@@ -35,3 +35,44 @@ ul {
 .users p.available {
   color: #d63131;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.create-form {
+  width: 50%;
+  margin-left: 5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  width: 50%;
+  height: 1.5em;
+  margin: 3px 3px;
+}
+
+form button {
+  width: 50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #666;
+  color: white;
+  margin-top: 10px;
+}
+
+.avatar-selection {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-selection img {
+  width: 40%;
+  height: auto;
+}

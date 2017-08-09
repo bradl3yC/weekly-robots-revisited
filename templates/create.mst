@@ -3,28 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Creat a Robot!</title>
+    <link rel="stylesheet" href="/main-style.css">
   </head>
   <body>
-    <h1>Create a robot!</h1>
-    <!-- username name avatar email university job company phone street_num
-    street_name city state_or_province postal_code country     -->
-
-    <form class="" action="/new" method="post">
-      <input type="text" name="username" placeholder="Username">
-      <input type="text" name="name" placeholder="Full Name">
-      <input type="text" name="avatar" placeholder="Avatar URL">
-      <input type="text" name="university" placeholder="University">
-      <input type="text" name="job" placeholder="Job">
-      <input type="text" name="company" placeholder="Company">
-      <input type="text" name="phone" placeholder="Phone Number">
-      <input type="text" name="street_num" placeholder="Street Number">
-      <input type="text" name="street_name" placeholder="Street Name">
-      <input type="text" name="city" placeholder="City">
-      <input type="text" name="state_or_province" placeholder="State or Province">
-      <input type="text" name="postal_code" placeholder="Postal Code">
-      <input type="text" name="country" placeholder="Country">
-      <input type="text" name="skills" placeholder="Skills comma separated">
-      <button type="submit" name="button">Create Robot!</button>
-    </form>
+    <div class="wrapper">
+      <div class="create-form">
+        <h1>Create a robot!</h1>
+        <form class="new-robot" action="/new" method="post">
+          <input type="text" name="username" placeholder="Username">
+          <input type="text" name="name" placeholder="Full Name">
+          <input class="avatar" type="text" name="avatar" placeholder="Avatar URL">
+          <input type="text" name="university" placeholder="University">
+          <input type="text" name="job" placeholder="Job">
+          <input type="text" name="company" placeholder="Company">
+          <input type="text" name="phone" placeholder="Phone Number">
+          <input type="text" name="street_num" placeholder="Street Number">
+          <input type="text" name="street_name" placeholder="Street Name">
+          <input type="text" name="city" placeholder="City">
+          <input type="text" name="state_or_province" placeholder="State or Province">
+          <input type="text" name="postal_code" placeholder="Postal Code">
+          <input type="text" name="country" placeholder="Country">
+          <input type="text" name="skills" placeholder="Skills comma separated">
+          <button type="submit" name="button">Create Robot!</button>
+        </form>
+      </div>
+      <div class="avatar-selection">
+        <h1>Select and Avatar!</h1>
+        <img src="https://robohash.org/blanditiisexercitationemquaerat.png?size=150x150&set=set1" alt="">
+        <img src="https://robohash.org/iurequiaet.bmp?size=150x150&set=set1" alt="">
+        <img src="https://robohash.org/oditipsanostrum.jpg?size=150x150&set=set1" alt="">
+        <img src="https://robohash.org/etquiet.png?size=150x150&set=set1" alt="">
+      </div>
+    </div>
+    <script src="/helper.js"></script>
   </body>
 </html>
