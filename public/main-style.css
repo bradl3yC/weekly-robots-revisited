@@ -43,7 +43,7 @@ ul {
 }
 
 .create-form {
-  width: 50%;
+  width: 30%;
   margin-left: 5em;
 }
 
@@ -53,13 +53,13 @@ form {
 }
 
 form input {
-  width: 50%;
+  width: 70%;
   height: 1.5em;
   margin: 3px 3px;
 }
 
 form button {
-  width: 50px;
+  width: 80px;
   border: none;
   border-radius: 5px;
   background-color: #666;

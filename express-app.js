@@ -3,6 +3,7 @@ const mustacheExpress = require('mustache-express')
 const pgPromise = require('pg-promise')()
 const robotDatabase = pgPromise({ database: 'robots' })
 const bodyParser = require('body-parser')
+const expressValidator = require('express-validator')
 
 // create table robots (
 // id serial primary key,
@@ -30,6 +31,7 @@ const app = express()
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(expressValidator())
 
 app.engine('mst', mustacheExpress())
 app.set('views', './templates')
@@ -89,6 +91,17 @@ app.post('/delete/:id', (request, response) => {
 })
 
 app.post('/new', (request, response) => {
+
+  request.checkBody("username", "Invalid Username - Username cannot be blank").notEmpty()
+
+  const errors = request.validationErrors()
+
+  if (errors) {
+    const displayError = "Invalid Username - Username cannot be blank"
+    response.render("create", {displayError})
+    return
+  }
+
   const newRobot = {
     username: request.body.username,
     name: request.body.name,

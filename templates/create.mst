@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/main-style.css">
   </head>
   <body>
+    {{displayError}}
     <div class="wrapper">
       <div class="create-form">
         <h1>Create a robot!</h1>
