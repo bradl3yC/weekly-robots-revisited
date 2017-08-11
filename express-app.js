@@ -79,9 +79,7 @@ app.post('/delete/:id', (request, response) => {
             task.none(`DELETE FROM skills WHERE robot_id = $(id)`, {id: id})
         ])
       })
-      .then(data => {
-          const robot = data[0]
-          const skills = data[1]
+      .then(() => {
           response.redirect("/")
       })
         .catch(error => {
