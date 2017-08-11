@@ -85,7 +85,7 @@ app.post('/delete/:id', (request, response) => {
           response.redirect("/")
       })
         .catch(error => {
-          const displayError = "Oops! Something wen't wrong!"
+          const displayError = "Oops! Something went wrong!"
           response.render("index", {displayError})
       })
 })
@@ -93,11 +93,12 @@ app.post('/delete/:id', (request, response) => {
 app.post('/new', (request, response) => {
 
   request.checkBody("username", "Invalid Username - Username cannot be blank").notEmpty()
+  request.checkBody("name", "Invalid Username - Username cannot be blank").notEmpty()
 
   const errors = request.validationErrors()
 
   if (errors) {
-    const displayError = "Invalid Username - Username cannot be blank"
+    const displayError = "Invalid Username - Username and name cannot be blank"
     response.render("create", {displayError})
     return
   }
